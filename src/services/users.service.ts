@@ -5,7 +5,8 @@ import createToken from '../helpers/token';
 const UserService = {
   create: async (user: IUser) => {
     const result = await userModel.create(user);
-    const token = createToken.createToken(result);
+    const { password, ...userWithoutPassword } = result;
+    const token = createToken.createToken(userWithoutPassword);
     return token;
   },
 };

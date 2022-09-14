@@ -15,8 +15,7 @@ const productModel = {
       .execute<ResultSetHeader>(query, [product.name, product.amount]);
     return {
       id: result.insertId,
-      name: product.name,
-      amount: product.amount,
+      ...product,
     };
   },
 };
